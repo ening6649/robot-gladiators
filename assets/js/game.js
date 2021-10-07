@@ -25,23 +25,23 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 // the enemyName in var fight function is just a name, not a variable 
-var fight = function(enenmyName) {
+var fight = function(enemyName) {
     window.alert("Welcome to Robot Gladiators!");
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
     if (promptFight === "fight" || promptFight === "FIGHT") {
         enemyHealth = enemyHealth - playerAttack;
         console.log(
-        playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
+        playerName + " attacked " + enemyName+ ". " + enemyName + " now has " + enemyHealth + " health remaining."
          );
         playerHealth = playerHealth - enemyAttack;
         console.log(
-            enemyNames + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
+            enemyName + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
         );
         if (enemyHealth <=0) {
-            window.alert(enemyNames + " has died!");
+            window.alert(enemyName + " has died!");
         }
         else {
-            window.alert(enemyNames + " still has " + enemyHealth + " health left.");
+            window.alert(enemyName + " still has " + enemyHealth + " health left.");
         }
         if (playerHealth <= 0) {
             window.alert(playerName + " has died!");
