@@ -6,29 +6,42 @@ var playerName = window.prompt("what is your robot's name?")
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
-console.log(playerName,playerAttack,playerHealth,playerMoney);
+// console.log(playerName,playerAttack,playerHealth,playerMoney);
 
-var enemyName = "Roborto";
+
+// console.log(enemyNames[0]); displays the first enemy name which is roborto
+// console.log(enemyNames.length); displays the number of arrow in enemeyNames
+// consolo.log(enemyNames[enemyNames.length-1]) displays the last element in enemyNames array
+// for([initial expression]; [condition]; [increment expression]) {
+//     statement
+//  }
+// for(var i = 0; i < 3; i++) {
+//     console.log("apple", i);
+//   }  i++  means i= i+1
+
+
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+// the enemyName in var fight function is just a name, not a variable 
+var fight = function(enenmyName) {
     window.alert("Welcome to Robot Gladiators!");
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
     if (promptFight === "fight" || promptFight === "FIGHT") {
         enemyHealth = enemyHealth - playerAttack;
         console.log(
-        playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+        playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
          );
         playerHealth = playerHealth - enemyAttack;
         console.log(
-            enemyName + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
+            enemyNames + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
         );
         if (enemyHealth <=0) {
-            window.alert(enemyName + " has died!");
+            window.alert(enemyNames + " has died!");
         }
         else {
-            window.alert(enemyName + " still has " + enemyHealth + " health left.");
+            window.alert(enemyNames + " still has " + enemyHealth + " health left.");
         }
         if (playerHealth <= 0) {
             window.alert(playerName + " has died!");
@@ -50,7 +63,11 @@ var fight = function() {
     }
 }
 
-fight();
+for(var i=0;i<enemyNames.length;i++) {
+    fight(enemyNames[i]);
+}
+
+
 
 
 // window.alert(playerName); note variable name does not need ""
