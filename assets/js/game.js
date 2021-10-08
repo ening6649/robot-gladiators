@@ -26,46 +26,50 @@ var enemyAttack = 12;
 
 // the enemyName in var fight function is just a name, not a variable 
 var fight = function(enemyName) {
-    window.alert("Welcome to Robot Gladiators!");
-    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-    if (promptFight === "fight" || promptFight === "FIGHT") {
-        enemyHealth = enemyHealth - playerAttack;
-        console.log(
-        playerName + " attacked " + enemyName+ ". " + enemyName + " now has " + enemyHealth + " health remaining."
-         );
-        playerHealth = playerHealth - enemyAttack;
-        console.log(
-            enemyName + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
-        );
-        if (enemyHealth <=0) {
-            window.alert(enemyName + " has died!");
+    // window.alert("Welcome to Robot Gladiators!");
+    while(enemyHealth>0) {
+        var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+        if (promptFight === "fight" || promptFight === "FIGHT") {
+            enemyHealth = enemyHealth - playerAttack;
+            console.log(
+            playerName + " attacked " + enemyName+ ". " + enemyName + " now has " + enemyHealth + " health remaining."
+             );
+            playerHealth = playerHealth - enemyAttack;
+            console.log(
+                enemyName + " attacked " + playerName + ". " + playerName + " now has "+ playerHealth + " health remaining."
+            );
+            if (enemyHealth <=0) {
+                window.alert(enemyName + " has died!");
+            }
+            else {
+                window.alert(enemyName + " still has " + enemyHealth + " health left.");
+            }
+            if (playerHealth <= 0) {
+                window.alert(playerName + " has died!");
+            } 
+            else {
+                window.alert(playerName + " still has " + playerHealth + " health left.");
+            }
+        } else if (promptFight === "skip" || promptFight === "SKIP") {
+            var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+            if(confirmSkip) {
+                window.alert(playerName + " has decided to skp this fight. Goodbye!");
+                playerMoney = playerMoney - 2;
+            }
+            else {
+                fight();
+            }
+        } else {
+            window.alert("You need to choose a valid option. Try again!");
         }
-        else {
-            window.alert(enemyName + " still has " + enemyHealth + " health left.");
-        }
-        if (playerHealth <= 0) {
-            window.alert(playerName + " has died!");
-        } 
-        else {
-            window.alert(playerName + " still has " + playerHealth + " health left.");
-        }
-    } else if (promptFight === "skip" || promptFight === "SKIP") {
-        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-        if(confirmSkip) {
-            window.alert(playerName + " has decided to skp this fight. Goodbye!");
-            playerMoney = playerMoney - 2;
-        }
-        else {
-            fight();
-        }
-    } else {
-        window.alert("You need to choose a valid option. Try again!");
     }
 }
 
 for(var i=0;i<enemyNames.length;i++) {
     fight(enemyNames[i]);
 }
+
+
 
 
 
@@ -90,3 +94,8 @@ for(var i=0;i<enemyNames.length;i++) {
 
 // This is a Boolean data type, which can only be given a value of true or false.
 // var booleanDataType = true;
+
+// while([Condition]) {
+//     statement
+//   }
+// 
