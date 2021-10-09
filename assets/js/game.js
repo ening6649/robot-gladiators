@@ -32,13 +32,15 @@ var fight = function(enemyName) {
             var confirmSkip = window.confirm("Are you sure you'd like to quit?");
             if(confirmSkip) {
                 window.alert(playerName + " has decided to skp this fight. Goodbye!");
-                playerMoney = playerMoney - 10;
+                playerMoney = Math.max(0, playerMoney - 10);
                 console.log("playerMoney", playerMoney);
                 break;
             }
         }
          // remove enemy's health by subtracting the amount set in the playerAttack variable
-        enemyHealth = enemyHealth - playerAttack;
+        //  math.max helps to display enemy health to be at least 0 in case enemy health falls below 0
+        var damage = randomNumber(playerAttack -3, playerAttack);
+        enemyHealth = Math.max(0, enemyHealth - damage);
         console.log(
         playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
         );
@@ -56,8 +58,9 @@ var fight = function(enemyName) {
         window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
         }
 
+        var damage = randomNumber(enemyAttack-3, enemyAttack);
         // remove players's health by subtracting the amount set in the enemyAttack variable
-        playerHealth = playerHealth - enemyAttack;
+        playerHealth = Math.max(0, playerHealth - damage);
         console.log(
         enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
         );
@@ -84,7 +87,9 @@ var startGame = function () {
         if (playerHealth > 0) {
             window.alert("Welcome to the Robot Gladiators!" + (i+1));
             var pickedEnemyName = enemyNames[i];
-            enemyHealth = 50;
+            // Math.random () will return a random number between 0 and 1 but never 1. here, we will get a random number between 0 and 20 plus 40. math random rounds down. 
+            // enemyHealth = Math.floor(Math.random()* 21) + 40;
+            enemyHealth = randomNumber(40,60);
             fight(pickedEnemyName);
             if (playerHealth>0 && i<enemyNames.length-1){
                 var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
@@ -166,10 +171,21 @@ var shop = function() {
   };
 };
 
+// if we want a random number between 40-60, call the function as randomNumber(40,60)
+var randomNumber = function(min,max) {
+    var value = Math.floor(Math.random() * (max-min +1) + min);
+    // returns and stores a value , also ends function exectuion 
+    return value;
+};
+
 startGame();
 
 
-
+// //  addTwoNumbers (number 1, number 2){
+//     return number1 + number2;
+// }
+//  addTwoNumbers (4, 6);
+// the above is a simple function declaration followed by a function call. without return , the result will be undefined. 
         // if (promptFight === "fight" || promptFight === "FIGHT") {
         //     enemyHealth = enemyHealth - playerAttack;
         //     console.log(
