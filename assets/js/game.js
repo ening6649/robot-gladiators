@@ -193,8 +193,17 @@ var enemyInfo = [
 // var enemy.health = 5.a;
 // var enemy.attack = 12;
 
+var getPlayerName = function() {
+    var name="";
+    while (name==="" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+    console.log("Your robot's name is "+name);
+    return name;
+}
+
 var playerInfo = {
-    name: window.prompt("what is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -223,6 +232,7 @@ var playerInfo = {
             window.alert("You don't have enough money!");
         }
         // the above is short hand for this.attack = this.attack +6
+        // this. refers to the parent object. 
     }
 }
 // the above is an object
